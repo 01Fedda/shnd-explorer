@@ -99,7 +99,8 @@ tr {
 #twitter-icon {
 	font-size: 20px;
 }
-.connections {
+
+/*.connections {
 	position: absolute;
 	bottom: 15px;
 	right: 15px;
@@ -107,6 +108,25 @@ tr {
 
 #lblBlockcount {
 	margin-right: 10px;
+}*/
+
+#shnder {
+	position: fixed;
+	bottom: 20px;
+	left: 570px;
+	z-index:1030;
+}
+
+.connections {
+	position: fixed;
+	bottom: 20px;
+	right: 15px;
+	z-index:1030;
+}
+
+#lblBlockcount {
+	margin-right: 10px;
+	z-index:1030;
 }
 
 #twitter-icon img{
@@ -139,18 +159,63 @@ tr {
 		padding: 0px;
 		padding-top:60px;
 	}
+	
+	#shnder {
+		position: fixed;
+		bottom: 20px;
+		left: 440px;
+		z-index:1030;
+	}
+	
+	.connections {
+		z-index: 1030;
+	}
+
+	#lblBlockcount {
+		z-index: 1030;
+	}
 }
 
 @media(max-width:1096px){
 	.nav-search input {
 	    width: 300px !important;
     }
+	
+	#shnder {
+		position: fixed;
+		bottom: 20px;
+		left: 440px;
+		z-index:1030;
+	}
+	
+	.connections {
+		z-index: 1030;
+	}
+
+	#lblBlockcount {
+		z-index: 1030;
+	}
 }
 
 @media(max-width:865px){
 	.nav-search input {
 	    width: 150px !important;
     }
+	
+	#shnder {
+		position: fixed;
+		bottom: 20px;
+		left: 440px;
+		z-index:1030;
+	}
+	
+	.connections {
+		z-index: 1030;
+	}
+
+	#lblBlockcount {
+		z-index: 1030;
+	}
 }
 .qrcode {
 	position: absolute;
