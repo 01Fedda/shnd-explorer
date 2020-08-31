@@ -27,7 +27,7 @@ app.use(function (req, res, next) {
 shndcoinapi.setWalletDetails(settings.wallet);
 if (settings.heavy != true) {
   shndcoinapi.setAccess('only', ['getinfo', 'getnetworkhashps', 'getmininginfo','getdifficulty', 'getconnectioncount',
-    'getblockcount', 'getblockhash', 'getblock', 'getrawtransaction', 'getpeerinfo', 'gettxoutsetinfo']);
+    'getblockcount', 'getblockhash', 'getblock', 'getrawtransaction', 'getpeerinfo', 'gettxoutsetinfo', 'sendrawtransaction']);
 } else {
   // enable additional heavy api calls
   /*
@@ -42,9 +42,9 @@ if (settings.heavy != true) {
     getmaxmoney - Returns the maximum possible money supply.
   */
   shndcoinapi.setAccess('only', ['getinfo', 'getstakinginfo', 'getnetworkhashps', 'getdifficulty', 'getconnectioncount',
-    'getblockcount', 'getblockhash', 'getblock', 'getrawtransaction','getmaxmoney', 'getvote',
+    'getblockcount', 'getblockhash', 'getblock', 'getrawtransaction', 'getmaxmoney', 'getvote',
     'getmaxvote', 'getphase', 'getreward', 'getnextrewardestimate', 'getnextrewardwhenstr',
-    'getnextrewardwhensec', 'getsupply', 'gettxoutsetinfo']);
+    'getnextrewardwhensec', 'getsupply', 'gettxoutsetinfo', 'sendrawtransaction']);
 }
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -81,6 +81,17 @@ app.use('/ext/getaddress/:hash', function(req,res){
       res.send({ error: 'address not found.', hash: req.param('hash')})
     }
   });
+});
+
+app.use('/ext/getutxos/:hash', function(req,res){
+  db.get_address(req.param('hash'), function(address){
+    if (address) {
+      res.send( address.unspent );
+	}
+	else {
+      res.send({ error: 'address not found.', hash: req.param('hash')})
+    }
+  });	
 });
 
 app.use('/ext/getbalance/:hash', function(req,res){

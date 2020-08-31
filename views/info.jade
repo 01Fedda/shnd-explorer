@@ -38,7 +38,11 @@ block content
              *#{settings.locale.api_getrawtransaction}*  
              [#{address}/api/getrawtransaction?txid=#{hashes.txhash}&decrypt=0](/api/getrawtransaction?txid=#{hashes.txhash}&decrypt=0)  
              [#{address}/api/getrawtransaction?txid=#{hashes.txhash}&decrypt=1](/api/getrawtransaction?txid=#{hashes.txhash}&decrypt=1)
-        
+
+          *  **sendrawtransaction [hex]**  
+             *#{settings.locale.api_sendrawtransaction}*  
+             [#{address}/api/sendrawtransaction?hex=00f0](/api/sendrawtransaction?hex=00f0)
+
 
         if settings.index.show_hashrate == true
           :markdown
@@ -108,6 +112,11 @@ block content
                *Returns last [count] transactions greater than [min]*  
                *Note: returned values are in satoshis*  
                [#{address}/ext/getlasttxs/10/100](/ext/getlasttxs/10/100)
+
+          *  **getutxos (/ext/getutxos/hash)**  
+               *Returns all unspent outputs (UTXOs) for given address, with scriptPubKey info *  
+               *Note: amount values are in satoshis*  
+               [#{address}/ext/getutxos/#{hashes.address}](/ext/getutxos/#{hashes.address})
 
           ------
 
